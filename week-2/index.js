@@ -1,22 +1,25 @@
-class Meetup {
-  constructor(name, location) {
-      this.name = name
-      this.location = location
-      this.attendees = []
-  }
+const Person = require('./person')
+const Meetup = require('./meetup')
+const Database = require('./database')
 
-  report() {
-      console.log(this.name, 'meetup is held at', this.location, 'and number of attendees are', this.attendees.length)
-  }
-}
+console.log('Hello World!')
 
-class Person {
-  constructor(name, age) {
-      this.name = name
-      this.age = age
-  }
+const add = (num1, num2) => num1 + num2
+const addResult = add(4, 7)
+const multiply = (num1, num2) => num1 * num2
+// console.log(addResult)
+const multiplyResult = multiply(addResult, 6)
+// console.log(multiplyResult)
 
-  attend(meetup) {
-      meetup.attendees.push(this)
-  }
-}
+const mert = new Person('Mert', 33)
+const armagan = new Person('Armagan', 34)
+// console.log(mert, armagan)
+
+const wtmb = new Meetup('Women Tech Makers Berlin', 'Eurostaff')
+armagan.attend(wtmb)
+mert.attend(wtmb)
+wtmb.report()
+
+Database.save(wtmb)
+const loadedFile = Database.load()
+console.log(loadedFile.attendees[0].name)

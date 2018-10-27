@@ -7,6 +7,12 @@
     {
       "type": "node",
       "request": "launch",
+      "name": "Launch Program",
+      "program": "${file}"
+    },
+    {
+      "type": "node",
+      "request": "launch",
       "name": "Launch week-3-2",
       "program": "${workspaceFolder}/week-3-2/index.js"
     },

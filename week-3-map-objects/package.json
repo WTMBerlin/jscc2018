@@ -1,0 +1,14 @@
+{
+  "name": "week-3-map-objects",
+  "version": "1.0.0",
+  "description": "WTM Berlin JS Crash Course 2018 Lecture 2 - Node.js",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Mert Cetin <mert@cetin.me>",
+  "license": "MIT",
+  "dependencies": {
+    "chalk": "^2.4.1"
+  }
+}

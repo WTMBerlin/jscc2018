@@ -1,4 +1,4 @@
-const fs = require('fs');
+const fs = require('fs')
 
 /*
 
@@ -6,14 +6,14 @@ First version, synchronous
 
 */
 
-const file1 = fs.readFileSync(__dirname + '/files/1.txt', 'utf8');
-console.log(file1);
+const file1 = fs.readFileSync(__dirname + '/files/1.txt', 'utf8')
+console.log(file1)
 
-const file2 = fs.readFileSync(__dirname + '/files/2.txt', 'utf8');
-console.log(file2);
+const file2 = fs.readFileSync(__dirname + '/files/2.txt', 'utf8')
+console.log(file2)
 
-const file3 = fs.readFileSync(__dirname + '/files/3.txt', 'utf8');
-console.log(file3);
+const file3 = fs.readFileSync(__dirname + '/files/3.txt', 'utf8')
+console.log(file3)
 
 /*
 
@@ -27,9 +27,9 @@ fs.readFile(__dirname + '/files/1.txt', 'utf8', (err, contents1) => {
         console.log(contents2)
         fs.readFile(__dirname + '/files/3.txt', 'utf8', (err, contents3) => {
             console.log(contents3)
-        });
-    });
-});
+        })
+    })
+})
 
 
 /*
@@ -41,11 +41,11 @@ Third version, promises
 let readFile = (filename) => {
     return new Promise((resolve, reject) => {
         fs.readFile(filename, 'utf8', (err, contents) => {
-            if (err) return reject(err);
+            if (err) return reject(err)
 
-            resolve(contents);
-        });
-    });
+            resolve(contents)
+        })
+    })
 }
 
 readFile(__dirname + '/files/1.txt')
@@ -53,7 +53,8 @@ readFile(__dirname + '/files/1.txt')
     .then(() => readFile(__dirname + '/files/2.txt'))
     .then(console.log)
     .then(() => readFile(__dirname + '/files/3.txt'))
-    .then(console.log);
+    .then(console.log)
+    .catch(err => console.log(err))
 
 /*
 
@@ -72,4 +73,10 @@ const main = async () => {
     console.log(contents3)
 }
 
-main()
+(async () => {
+    try {
+        await main()
+    } catch (e) {
+        console.log(e)
+    }
+})()

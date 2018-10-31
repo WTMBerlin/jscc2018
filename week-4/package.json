@@ -1,0 +1,17 @@
+{
+  "name": "week-3-models-and-services-2",
+  "version": "1.0.0",
+  "description": "WTM Berlin JS Crash Course 2018 Lecture 3 - async programming",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Armagan Amcalar <armagan@amcalar.com>",
+  "license": "MIT",
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "chalk": "^2.4.1",
+    "express": "^4.16.4",
+    "pug": "^2.0.3"
+  }
+}

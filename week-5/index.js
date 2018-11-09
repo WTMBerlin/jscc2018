@@ -2,7 +2,9 @@ const express = require('express')
 const bodyParser = require('body-parser')
 
 const PersonService = require('./services/person-service')
-// const MeetupService = require('./services/meetup-service')
+const MeetupService = require('./services/meetup-service')
+
+require('./mongo-connection')
 
 const app = express()
 
@@ -13,14 +15,16 @@ app.get('/', (req, res) => {
   res.render('index')
 })
 
+// PERSON ENDPOINTs
+
 app.get('/person/all', async (req, res) => {
   const people = await PersonService.findAll()
-  res.render('person', { people })
+  res.render('people', { people })
 })
 
 app.get('/person/:id', async (req, res) => {
   const user = await PersonService.find(req.params.id)
-  res.send(user)
+  res.render('data', { data: user })
 })
 
 app.post('/person', async (req, res) => {
@@ -33,25 +37,27 @@ app.delete('/person/:id', async (req, res) => {
   res.send(user)
 })
 
-// app.get('/meetup/all', async (req, res) => {
-//   const meetups = await MeetupService.findAll()
-//   res.send(meetups)
-// })
+// MEETUP ENDPOINTS
 
-// app.get('/meetup/:id', async (req, res) => {
-//   const meetup = await MeetupService.find(req.params.id)
-//   res.send(meetup)
-// })
+app.get('/meetup/all', async (req, res) => {
+  const meetups = await MeetupService.findAll()
+  res.render('data', { data: meetups })
+})
 
-// app.post('/meetup', async (req, res) => {
-//   const meetup = await MeetupService.add(req.body)
-//   res.send(meetup)
-// })
+app.get('/meetup/:id', async (req, res) => {
+  const meetup = await MeetupService.find(req.params.id)
+  res.render('data', { data: meetup })
+})
 
-// app.delete('/meetup/:id', async (req, res) => {
-//   const meetup = await MeetupService.del(req.params.id)
-//   res.send(meetup)
-// })
+app.post('/meetup', async (req, res) => {
+  const meetup = await MeetupService.add(req.body)
+  res.send(meetup)
+})
+
+app.post('/meetup/:id/addAttendee', async (req, res) => {
+  const meetup = await MeetupService.addAttendee(req.params.id, req.body.personId)
+  res.send(meetup)
+})
 
 app.listen(3000, () => {
   console.log('Server listening')

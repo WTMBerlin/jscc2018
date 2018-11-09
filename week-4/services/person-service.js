@@ -33,7 +33,9 @@ async function add(person) {
 async function del(personId) {
     const allPeople = await findAll()
     const personIndex = allPeople.findIndex(p => p.id == personId)
-    if (personIndex < 0) return
+    if (personIndex < 0) {
+        return
+    }
 
     allPeople.splice(personIndex, 1)
 

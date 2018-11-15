@@ -80,3 +80,35 @@ test("Delete a meetup", async t => {
 
   t.is(fetch.status, 404);
 });
+
+test('User can attend to a meetup', async t => {
+  const annaUser = { name: 'Anna Pavlova', age: 29 };
+
+  const meetupWTM = { name: 'WTM Testing',
+  location: 'Eurostaff',
+  attendees: []};
+
+  const createdPerson = (await request(app)
+  .post("/person")
+  .send(annaUser)).body
+
+  const meetupCreateRes = await request(app)
+  .post("/meetup")
+  .send(meetupWTM)
+
+  const createdMeetup = meetupCreateRes.body
+
+  const addAttendeeRes = await request(app)
+  .post(`/meetup/${createdMeetup._id}/addAttendee`)
+  .send( {personId : createdPerson._id} )
+
+  t.is(addAttendeeRes.status, 200)
+
+  const meetupAltered = addAttendeeRes.body
+
+  t.is(meetupAltered.attendees[0]._id, createdPerson._id)
+
+  t.deepEqual(meetupAltered.attendees[0], createdPerson)
+
+  t.notDeepEqual(meetupAltered, createdMeetup)
+})

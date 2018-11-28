@@ -1,0 +1,17 @@
+{
+  "name": "backend",
+  "version": "1.0.0",
+  "description": "WTM Berlin JS Crash Course 2018 Lecture 8 - put me in docker!",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "chalk": "^2.4.1",
+    "express": "^4.16.4",
+    "mongoose": "^5.3.9",
+    "pug": "^2.0.3"
+  }
+}

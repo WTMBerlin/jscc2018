@@ -14,7 +14,7 @@
     "chalk": "^2.4.1",
     "cors": "^2.8.5",
     "express": "^4.16.4",
-    "mongoose": "^5.3.9",
+    "mongoose": "^5.8.10",
     "mongoose-sequence": "^4.0.1",
     "pug": "^2.0.3"
   },

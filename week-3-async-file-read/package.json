@@ -9,6 +9,6 @@
   "author": "Armagan Amcalar <armagan@amcalar.com>",
   "license": "ISC",
   "dependencies": {
-    "async": "^2.6.1"
+    "async": "^2.6.4"
   }
 }

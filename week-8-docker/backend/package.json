@@ -10,7 +10,7 @@
   "dependencies": {
     "body-parser": "^1.18.3",
     "chalk": "^2.4.1",
-    "express": "^4.16.4",
+    "express": "^4.17.3",
     "mongoose": "^5.7.5",
     "pug": "^2.0.3"
   }
